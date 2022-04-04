@@ -1,13 +1,10 @@
-// @Time : 2021/4/21 下午5:29
-// @Author : yuchangfu
-// @File : main.go
 package main
 
 import (
-	"cmdb/config"
-	l "cmdb/log"
-	"cmdb/model"
 	"flag"
+	"gin-model/config"
+	l "gin-model/log"
+	"gin-model/model"
 	"github.com/toolkits/pkg/runner"
 	"log"
 	"os"
