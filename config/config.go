@@ -17,7 +17,7 @@ func GetConfigFile() string {
 
 func Init(cfg string) {
 	if cfg == "" {
-		log.Fatalln("config file not specified: use -c $filename")
+		log.Fatalln("config file not specified: use -f $filename")
 	}
 
 	if !file.IsExist(cfg) {

@@ -3,6 +3,7 @@ package model
 import (
 	"gin-model/config"
 	"github.com/go-redis/redis"
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 	"log"
 )

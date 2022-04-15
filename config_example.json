@@ -1,0 +1,26 @@
+{
+  "port": 8080,
+  "env": "debug",
+  "log": {
+    "path": "./app.log",
+    // trace,debug,info,warn,err,fatal,panic
+    "level": "debug"
+  },
+  "db": {
+    "debug": false,
+    "dsn": "root:@tcp(127.0.0.1:3306)/cmdb?loc=Local&parseTime=true",
+    "maxIdle": 4,
+    "MaxConn": 100
+  },
+  "redis": {
+    "enable": true,
+    // redis 模式：noemal，cluster，sentinel
+    "model": "normal",
+    // 当model = sentinel 配置此项
+    "master": "",
+    "adds": [
+      "127.0.0.1:6379"
+    ],
+    "password": "password"
+  }
+}

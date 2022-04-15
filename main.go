@@ -5,6 +5,7 @@ import (
 	"gin-model/config"
 	l "gin-model/log"
 	"gin-model/model"
+	"gin-model/routers"
 	"github.com/toolkits/pkg/runner"
 	"log"
 	"os"
@@ -15,7 +16,9 @@ var (
 	conf *string
 )
 
-// 在main前执行，显示文件和打印版本信息
+// @title         gin-model
+// @version       1.0
+// @license.name  mit
 func init() {
 	help = flag.Bool("h", false, "print this help.")
 	conf = flag.String("f", "", "specify configuration file.")
@@ -35,4 +38,5 @@ func main() {
 	config.Init(*conf) // 初始化配置
 	model.InitDB()
 	l.Init()
+	routers.Init()
 }

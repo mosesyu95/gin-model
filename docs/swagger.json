@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "gin-model",
+        "contact": {},
+        "license": {
+            "name": "mit"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/info": {
+            "get": {
+                "description": "默认的页面",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "info"
+                ],
+                "summary": "示例信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

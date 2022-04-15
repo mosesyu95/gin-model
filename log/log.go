@@ -20,12 +20,11 @@ func Init() { // 初始化log的函数
 		level = logrus.WarnLevel
 		log.Println("Load log level failed . set default level \"Warnning\" ", err.Error())
 	}
-	log := logrus.Logger{
+	Log = &logrus.Logger{
 		Formatter: &logrus.JSONFormatter{},
 		Out:       f,
 		Level:     level,
 	}
-	Log = &log
 	return
 }
 

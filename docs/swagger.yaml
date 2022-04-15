@@ -1,0 +1,35 @@
+info:
+  contact: {}
+  license:
+    name: mit
+  title: gin-model
+  version: "1.0"
+paths:
+  /info:
+    get:
+      consumes:
+      - application/json
+      description: 默认的页面
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: ok
+          schema:
+            type: string
+        "404":
+          description: ok
+          schema:
+            type: string
+        "500":
+          description: ok
+          schema:
+            type: string
+      summary: 示例信息
+      tags:
+      - info
+swagger: "2.0"

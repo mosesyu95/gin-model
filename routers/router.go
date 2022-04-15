@@ -1,12 +1,16 @@
 package routers
 
 import (
+	"fmt"
 	"gin-model/config"
+	_ "gin-model/docs"
 	l "gin-model/log"
 	"gin-model/middleware"
-	"fmt"
+	"gin-model/routers/api"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	"github.com/swaggo/files"       // swagger embed files
+	"github.com/swaggo/gin-swagger" // gin-swagger middleware
 	"io"
 	"net/http"
 	"os"
@@ -14,9 +18,12 @@ import (
 
 func CollectRoute(router *gin.Engine) *gin.Engine {
 
-	// if nor find router, will redirect to /crocodile/
+	router.Use(middleware.LoggerWithFormatter(), middleware.RecoveryMiddleware(), middleware.CORSMiddleware())
+	router.GET("/info", api.Info)
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	router.NoRoute(func(c *gin.Context) {
-		c.Redirect(http.StatusMovedPermanently, "/")
+		c.Redirect(http.StatusMovedPermanently, "/info")
 	})
 	return router
 }
@@ -25,7 +32,6 @@ func Init() {
 	r := gin.Default()
 	gin.SetMode(viper.GetString("server.env")) // 设置运行环境debug  release  test
 	gin.DefaultWriter = io.MultiWriter(l.Log.Out, os.Stdout)
-	r.Use(middleware.LoggerWithFormatter(), middleware.RecoveryMiddleware(), middleware.CORSMiddleware())
 	r = CollectRoute(r)
 	port := config.Config.Port
 	if port != 0 {
